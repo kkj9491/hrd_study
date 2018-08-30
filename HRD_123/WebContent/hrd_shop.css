@@ -1,0 +1,53 @@
+body {
+	margin: 0px;
+}
+
+header {
+	background: blue;
+	color: white;
+	height: 15vh;
+}
+
+header h1 {
+	margin: 0px;
+	text-align: center;
+}
+
+nav {
+	background: #a8c6f7;
+	color: white;
+	height: 5vh;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+section {
+	background: #edf0f4;
+	height: 75vh;
+	text-align: center;
+}
+
+section h2 {
+	margin: 0px;
+	text-align: center;
+}
+
+section ol {
+	margin: 0px;
+}
+
+section table, th, td {
+	
+	border: 1px solid black;
+}
+
+footer {
+	background: #475b75;
+	color: white;
+	text-align: center;
+	height: 5vh;
+}
