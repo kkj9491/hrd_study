@@ -28,7 +28,6 @@ nav a {
 section {
 	background: #edf0f4;
 	height: 75vh;
-	text-align: center;
 }
 
 section h2 {
@@ -41,8 +40,9 @@ section ol {
 }
 
 section table, th, td {
-	
+	text-align: center;
 	border: 1px solid black;
+	margin-top: 20px;
 }
 
 footer {
