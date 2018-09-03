@@ -1,6 +1,7 @@
 package org.study.web;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -45,15 +46,18 @@ public class RegisterServlet extends HttpServlet {
 		System.out.println("register dopost called");
 		
 		Member member = new Member();
-		member.setMember_num(request.getParameter("member_num"));
-		member.setMember_name(request.getParameter("member_name"));
+		member.setMember_num(Integer.parseInt(request.getParameter("member_num")));
+		member.setMember_name(URLDecoder.decode(
+				new String(request.getParameter("member_name").getBytes("iso-8859-1")), "UTF-8"));
 		member.setMember_phone(request.getParameter("member_phone"));
-		member.setMember_address(request.getParameter("member_address"));
+		member.setMember_address(URLDecoder.decode(
+				new String(request.getParameter("member_address").getBytes("iso-8859-1")), "UTF-8"));
 		
 		System.out.println("join date: " + request.getParameter("member_join_date"));
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		try {
 			java.util.Date join_date = format.parse(request.getParameter("member_join_date"));
+			member.setMember_join_date(new Date(join_date.getTime()));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,16 +67,23 @@ public class RegisterServlet extends HttpServlet {
 		member.setMember_city(request.getParameter("member_city"));
 		
 		System.out.println(member);
-		/*
-		if (dao != null) {
-			if (dao.insertMember(member)) {
-				System.out.println("dabase update success");
-			} else {
-				System.out.println("dabase update fail");
-			}
-		}
-		*/
 		
+		try {
+			if (dao != null) {
+				if (dao.insertMember(member)) {
+					System.out.println("dabase update success");
+					
+					return;
+				} else {
+					System.out.println("dabase update fail");
+					response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	}
 
 }

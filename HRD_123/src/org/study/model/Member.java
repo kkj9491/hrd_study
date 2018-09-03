@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Member {
 
-	private String member_num;
+	private Integer member_num;
 	private String member_name;
 	private String member_phone;
 	private String member_address;
@@ -12,11 +12,11 @@ public class Member {
 	private String member_title;
 	private String member_city;
 
-	public String getMember_num() {
+	public Integer getMember_num() {
 		return member_num;
 	}
 
-	public void setMember_num(String member_num) {
+	public void setMember_num(Integer member_num) {
 		this.member_num = member_num;
 	}
 

@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input id="reg_button" type="submit" onclick="register()" value="등록">
+					<button id="reg_button" type="button" onclick="register()">등록</button>
 					<button id="list_button" type="button" onclick="list()">조회</button>
 				</td>
 
@@ -60,10 +60,21 @@
 			return;
 		}
 		
-		/* var doc_root = '${pageContext.request.contextPath}';
 		var formObj = document.getElementById('reg_form');
-		formObj.action = doc_root + '/register';
-		formObj.submit(); */
+		var elem = formObj.elements;
+		var params = '';
+		
+		for (var i = 0; i < elem.length; i++) {
+			if (elem[i].tagName == 'SELECT') {
+				value = elem[i].options[elem[i].selectedIndex].value;
+			} else {
+				value = elem[i].value;
+			}
+			
+			params += elem[i].name + "=" + encodeURIComponent(value) + "&";
+		}
+		
+		console.log(params);
 		
 		request = new XMLHttpRequest();
 		var url = "${pageContext.request.contextPath}/register";
@@ -71,7 +82,9 @@
 		try {
 			request.onreadystatechange = getResult;
 			request.open("POST", url, true);
-			request.send();
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.setRequestHeader("Content-length", params.length);
+			request.send(params);
 		} catch (e) {
 			alert("서버로 요청이 실패");
 		}
@@ -81,9 +94,10 @@
 		if (request.readyState == 4) {
 			var result = request.responseText;
 			
-			if (result === '0') {
+			if (request.status === 200) {
 				alert('회원등록이 완료되었습니다');
 			} else {
+				console.log(request.status);
 				alert('회원등록이 실패하였습니다');
 			}
 		}
@@ -91,6 +105,8 @@
 	
 	function list() {
 		console.log("list called.");
+		var doc_root = '${pageContext.request.contextPath}';
+		location.href = doc_root + "/list";
 	}
 	
 	function name_validate() {
