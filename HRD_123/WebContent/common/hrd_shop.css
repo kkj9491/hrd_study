@@ -1,33 +1,47 @@
-body {
+html, body {
+
 	margin: 0px;
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	background: #e0e1e2;
 }
 
 header {
-	background: blue;
+	background: #0035f7;
 	color: white;
-	height: 15vh;
+	height: 13%;
 }
 
-header h1 {
-	margin: 0px;
+.vcenter {
+	position: relative;
+	top:50%;
+	transform: translateY(-50%);
+}
+
+.title {
+	margin: 0;
 	text-align: center;
 }
 
 nav {
+	height: 8%;
 	background: #a8c6f7;
 	color: white;
-	height: 5vh;
 }
 
 nav a {
-	color: white;
-	text-decoration: none;
+	display: inline-block;
 	margin-left: 20px;
+	
 }
 
 section {
-	background: #edf0f4;
-	height: 75vh;
+	height: 70%;
+	width: 90%;
+	margin: 5px 5%;
 }
 
 section h2 {
@@ -45,9 +59,28 @@ section table, th, td {
 	margin-top: 20px;
 }
 
+table {
+	margin: 0 auto;
+}
+
+table td {
+	padding: 0px 10px;
+}
+
 footer {
+	height: 8%;
+	width: 100%;
 	background: #475b75;
 	color: white;
-	text-align: center;
-	height: 5vh;
+	text-align: center; 
 }
+
+footer p {
+	margin: 0;
+}
+
+
+
+
+
+

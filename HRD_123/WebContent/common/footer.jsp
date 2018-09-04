@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 	<footer>
-		HRDKOREA Copyright&copy;2016 ...
+		<p class="vcenter">HRDKOREA Copyright&copy;2016 ...</p>
 	</footer>
 </body>
 </html>
