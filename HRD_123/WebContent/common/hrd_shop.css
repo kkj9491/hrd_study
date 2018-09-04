@@ -27,7 +27,7 @@ header {
 }
 
 nav {
-	height: 8%;
+	height: 7%;
 	background: #a8c6f7;
 	color: white;
 }
@@ -39,9 +39,10 @@ nav a {
 }
 
 section {
-	height: 70%;
+	min-height: 80%;
 	width: 90%;
 	margin: 5px 5%;
+	margin-bottom: -7%;
 }
 
 section h2 {
@@ -68,7 +69,7 @@ table td {
 }
 
 footer {
-	height: 8%;
+	height: 7%;
 	width: 100%;
 	background: #475b75;
 	color: white;

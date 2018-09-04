@@ -26,7 +26,7 @@ public class SaleListServlet extends HttpServlet {
 		
 		try {
 			List<SaleRecord> list = dao.getSaleList();
-			//System.out.println(list);
+			System.out.println(list);
 			request.setAttribute("list", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
