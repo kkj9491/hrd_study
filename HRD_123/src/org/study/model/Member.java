@@ -6,6 +6,7 @@ public class Member {
 
 	private Integer member_num;
 	private String member_name;
+	private String member_pw;
 	private String member_phone;
 	private String member_address;
 	private Date member_join_date;
@@ -18,6 +19,15 @@ public class Member {
 
 	public void setMember_num(Integer member_num) {
 		this.member_num = member_num;
+	}
+
+	
+	public String getMember_pw() {
+		return member_pw;
+	}
+
+	public void setMember_pw(String member_pw) {
+		this.member_pw = member_pw;
 	}
 
 	public String getMember_name() {
@@ -70,9 +80,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [member_num=" + member_num + ", member_name=" + member_name + ", member_phone=" + member_phone
-				+ ", member_address=" + member_address + ", member_join_date=" + member_join_date + ", member_title="
-				+ member_title + ", member_city=" + member_city + "]";
+		return "Member [member_num=" + member_num + ", member_name=" + member_name + ", member_pw=" + member_pw
+				+ ", member_phone=" + member_phone + ", member_address=" + member_address + ", member_join_date="
+				+ member_join_date + ", member_title=" + member_title + ", member_city=" + member_city + "]";
 	}
 
 }

@@ -19,6 +19,14 @@
 				<td><input id='mem_name' type='text' name='member_name' placeholder="Enter name..." required ></td>
 			</tr>
 			<tr>
+				<td>비밀번호</td>
+				<td><input id='mem_pw1' type='password' name='member_pw1' placeholder="Enter Password" required ></td>
+			</tr>
+			<tr>
+				<td>비밀번호 확인</td>
+				<td><input id='mem_pw2' type='password' name='member_pw2' placeholder="Enter Password again" required ></td>
+			</tr>
+			<tr>
 				<td>회원전화</td>
 				<td><input type='text' name='member_phone'></td>
 			</tr>
@@ -57,6 +65,10 @@
 		console.log("register called.");
 		
 		if (name_validate() === false) {
+			return;
+		}
+		
+		if (pw_validate() === false) {
 			return;
 		}
 		
@@ -114,6 +126,28 @@
 		
 		if (input_name.value === '') {
 			alert('회원성명이 입력되지 않았습니다');
+			return false;
+		}
+		
+		return true;
+	}
+	
+	function pw_validate() {
+		var pw1 = document.getElementById('mem_pw1');
+		var pw2 = document.getElementById('mem_pw2');
+		
+		if (pw1.value == '') {
+			alert('비밀번호가 입력되지 않았습니다');
+			return false;
+		}
+		
+		if (pw2.value == '') {
+			alert('비밀번호 확인이 입력되지 않았습니다');
+			return false;
+		}
+		
+		if (pw1.value != pw2.value) {
+			alert('입력하신 비밀번호가 같지 않습니다.');
 			return false;
 		}
 		

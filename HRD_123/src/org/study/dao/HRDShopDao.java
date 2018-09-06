@@ -61,8 +61,8 @@ public class HRDShopDao {
 		boolean bResult = false;
 		
 		if (conn != null && member != null) {
-			String sql = "insert into member_tbl_02 (custno, custname, phone, address, joindate, grade, city)" + 
-					"values (?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into member_tbl_02 (custno, custname, phone, address, joindate, grade, city, pw)" + 
+					"values (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, member.getMember_num());
@@ -72,6 +72,7 @@ public class HRDShopDao {
 			ps.setDate(5, member.getMember_join_date());
 			ps.setString(6, member.getMember_title());
 			ps.setString(7, member.getMember_city());
+			ps.setString(8, member.getMember_pw());
 			result = ps.executeUpdate();
 			
 			if (result > 0) {
@@ -243,5 +244,39 @@ public class HRDShopDao {
 		} else {
 			return false;
 		}
+	}
+
+	public String authenticateUser(Integer id, String pw) throws Exception {
+		Connection conn = getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String name = null;
+		
+		if (conn != null && id != null && pw != null) {
+			String sql = "select custname from member_tbl_02 " + 
+					"where custno=? and pw=?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setString(2, pw);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				name = rs.getString(1);
+			}
+			
+			if (ps != null) {
+				ps.close();
+			}
+			
+			if (rs != null) {
+				rs.close();
+			}
+			
+			conn.close();
+		}
+		
+		return name;
+		
 	}
 }
