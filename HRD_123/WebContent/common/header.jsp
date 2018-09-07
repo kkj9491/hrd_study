@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -16,6 +18,15 @@
 			<a href="${pageContext.request.contextPath }/register">회원등록</a>
 			<a href="${pageContext.request.contextPath }/list">회원목록조회/수정</a>
 			<a href="${pageContext.request.contextPath }/saleList">회원매출조회</a>
-			<a style="float: right; margin-right: 10px;" href="${pageContext.request.contextPath }/">홈으로.</a>
+			<a href="${pageContext.request.contextPath }/">홈으로.</a>
+			<c:choose>
+				<c:when test="${empty user }">
+					<a style="float: right; margin-right: 10px;" href="${pageContext.request.contextPath }/login">로그인</a>
+				</c:when>
+				<c:otherwise>
+					<a style="float: right; margin-right: 10px;" href="${pageContext.request.contextPath }/logout">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 	</nav>
